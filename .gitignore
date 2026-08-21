@@ -1,0 +1,6 @@
+node_modules
+dist
+.env
+*.log
+native-plugins/call-audio-route/android/build/
+*.tsbuildinfo
