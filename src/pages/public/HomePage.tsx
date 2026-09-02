@@ -1,16 +1,36 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "../../components/Header";
 import AuthModal from "../../components/AuthModal";
-import { addToCart, createHomeItem, getCart } from "../../api/userApi";
-import { hasToken } from "../../store/auth";
 
 export default function HomePage() {
-  const [loginOpen, setLoginOpen] = useState(false); const [cartCount, setCartCount] = useState(0); const [msg, setMsg] = useState("");
-  const [f, setF] = useState({ itemType: "House Key", title: "Main Door Key", ownerName: "", emergencyContact: "", description: "", customMessage: "If found, please scan this QR and contact me.", price: 299 });
-  const refreshCart = async()=>{ if(!hasToken()) return; try{const {data}=await getCart(); setCartCount(data.count||0);}catch{}};
-  useEffect(()=>{refreshCart();},[]);
-  const submit = async(e:React.FormEvent)=>{e.preventDefault(); if(!hasToken()){setLoginOpen(true);return;} try{const {data:item}=await createHomeItem({itemType:f.itemType,title:f.title,price:f.price,specifications:{ownerName:f.ownerName,emergencyContact:f.emergencyContact,description:f.description,customMessage:f.customMessage}}); await addToCart(item._id); await refreshCart(); setMsg("Added to cart");}catch(err:any){setMsg(err?.response?.data?.message||"Failed");}};
-  return <><Header cartCount={cartCount} onLogin={()=>setLoginOpen(true)}/><main><section className="hero"><div><span className="eyebrow">HOME CATEGORY ONLY · PHASE 1</span><h1>One QR tag can help your home item find its way back.</h1><p>Create a Home item, add its recovery details, place an order and receive a printable QR after admin approval.</p><a className="primary anchor" href="#create">Create Home QR Tag</a></div><div className="heroCard"><div className="fakeQr">▦</div><strong>HOME-AB12CD34</strong><small>Scan → finder form → instant alert</small></div></section>
-  <section className="how"><div><b>1</b><h3>Create Home Item</h3><p>Add key, document, luggage or another home item.</p></div><div><b>2</b><h3>Place Order</h3><p>Cart, payment summary and admin approval.</p></div><div><b>3</b><h3>Recover Faster</h3><p>Finder shares photo, contact and location.</p></div></section>
-  <section id="create" className="formCard"><div><span className="eyebrow">HOME CATEGORY</span><h2>Configure your Home QR tag</h2><p>You can add more categories later without changing the order/QR/scan engine.</p></div><form onSubmit={submit}><select value={f.itemType} onChange={e=>setF({...f,itemType:e.target.value})}><option>House Key</option><option>Important Document</option><option>Home Appliance</option><option>Home Luggage</option><option>Other Home Item</option></select><input placeholder="Item title" value={f.title} onChange={e=>setF({...f,title:e.target.value})}/><input placeholder="Owner name" value={f.ownerName} onChange={e=>setF({...f,ownerName:e.target.value})}/><input placeholder="Emergency contact" value={f.emergencyContact} onChange={e=>setF({...f,emergencyContact:e.target.value})}/><textarea placeholder="Description" value={f.description} onChange={e=>setF({...f,description:e.target.value})}/><textarea placeholder="Finder message" value={f.customMessage} onChange={e=>setF({...f,customMessage:e.target.value})}/><div className="priceRow"><strong>₹{f.price}</strong><button className="primary" type="submit">Add to Cart</button></div>{msg&&<p>{msg}</p>}</form></section></main><AuthModal open={loginOpen} onClose={()=>setLoginOpen(false)} onLoggedIn={refreshCart}/></>;
+  const [loginOpen, setLoginOpen] = useState(false);
+
+  return (
+    <>
+      <Header onLogin={() => setLoginOpen(true)}/>
+      <main>
+        <section className="hero">
+          <div>
+            <span className="eyebrow">QR RECOVERY PRODUCTS</span>
+            <h1>Choose a category, select a QR product and add your details.</h1>
+            <p>
+              Categories, product images, prices and specification fields are managed from the Master panel and shown dynamically on the user side.
+            </p>
+          </div>
+          <div className="heroCard">
+            <div className="fakeQr">▦</div>
+            <strong>HOME QR RECOVERY</strong>
+            <small>Select a category from the bar above</small>
+          </div>
+        </section>
+
+        <section className="how">
+          <div><b>1</b><h3>Select Category</h3><p>Open HOME, VEHICLE, PET or any active Master category.</p></div>
+          <div><b>2</b><h3>Select Product Image</h3><p>See the Master-uploaded QR image, price and dynamic specification form.</p></div>
+          <div><b>3</b><h3>Add to Cart</h3><p>Save to MongoDB, update the header badge instantly and place a pending order.</p></div>
+        </section>
+      </main>
+      <AuthModal open={loginOpen} onClose={() => setLoginOpen(false)} onLoggedIn={() => setLoginOpen(false)}/>
+    </>
+  );
 }

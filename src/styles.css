@@ -10,3 +10,2132 @@
 .cardActions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}.secondaryAction{display:inline-flex;align-items:center;gap:7px;border:1px solid #d8e0ec;background:#fff;color:#24415f;text-decoration:none;padding:9px 12px;border-radius:9px;font-weight:700;cursor:pointer}
 .scanGrid{display:grid;gap:16px}.scanCard{background:#fff;border:1px solid #e6ebf2;border-radius:18px;padding:16px;display:grid;grid-template-columns:180px 1fr;gap:18px;box-shadow:0 8px 30px #1c355b0c}.scanCard img,.photoPlaceholder{width:180px;height:180px;object-fit:cover;border-radius:14px}.photoPlaceholder{background:#eef2f7;display:grid;place-items:center;color:#7a8798}.scanCard h3{margin-top:2px}.scanCard p{margin:8px 0}.emptyState{background:#fff;border:1px dashed #cbd5e1;border-radius:16px;padding:30px;text-align:center;color:#64748b}.alertCard.isRead{opacity:.68}
 @media(max-width:700px){.scanCard{grid-template-columns:1fr}.scanCard img,.photoPlaceholder{width:100%;height:250px}.pageHead{align-items:flex-start;flex-direction:column}}
+   
+
+
+/* Append this block to the bottom of your existing src/styles.css */
+
+.masterLoginPage{background:linear-gradient(135deg,#eef4ff,#f8fafc)}
+.masterLoginBrand{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.masterLoginBrand h1{margin:0}
+.masterLoginBrand p{margin:4px 0 0;color:#64748b}
+/* =========================================================
+   MASTER PANEL - BASE LAYOUT
+========================================================= */
+.masterDash {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  overflow: hidden;
+  background: #f4f7fb;
+}
+
+.masterSide {
+  width: 260px;
+  height: 100vh;
+  min-height: 100vh;
+  position: relative;
+  z-index: 40;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.masterSide .masterBrand {
+  flex-shrink: 0;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.masterSide .masterBrand .logo {
+  flex-shrink: 0;
+}
+
+.masterNav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.masterNav a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.masterNav a svg,
+.masterLogout svg {
+  flex-shrink: 0;
+}
+
+.masterLogout {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.masterMain {
+  min-width: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 70px minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.masterHeader {
+  width: 100%;
+  height: 70px;
+  position: relative;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 52px;
+  align-items: center;
+  padding: 0 24px;
+  background: #fff;
+  border-bottom: 1px solid #e6ebf2;
+}
+
+.masterHeaderLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.masterHeaderCenter {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.masterHeaderCenter strong {
+  display: block;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.masterHeaderCenter span {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.masterHeaderRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.masterMenuButton {
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #d8e0ec;
+  border-radius: 9px;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
+}
+
+.masterNotificationButton {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
+  position: relative;
+}
+
+.masterNotificationButton:hover {
+  background: #f8fafc;
+}
+
+.masterNotificationBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  border: 2px solid #fff;
+}
+
+.masterOutlet {
+  min-width: 0;
+  min-height: 0;
+  padding: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f4f7fb;
+}
+
+.masterSidebarBackdrop {
+  display: none;
+}
+.masterPageActions{display:flex;align-items:center;gap:10px}
+.masterCategoryForm{margin-bottom:20px}
+.masterCategoryForm form{display:grid;gap:14px}
+.masterCategoryForm label{display:grid;gap:7px;font-weight:700}
+.masterCategoryForm input,.masterCategoryForm textarea,.masterCategoryForm select{width:100%;padding:12px 13px;border:1px solid #d8e0ec;border-radius:10px;background:#fff}
+.masterCategoryForm textarea{min-height:100px;resize:vertical}
+.masterFormHead{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:18px}
+.masterFormHead h2{margin:0}
+.masterFormHead p{margin:6px 0 0;color:#64748b}
+.iconButton{border:0;background:transparent;cursor:pointer;color:#64748b}
+.categoryActions{display:flex;gap:8px;flex-wrap:wrap}
+.editAction,.deleteAction{display:inline-flex;align-items:center;gap:6px;border-radius:8px;padding:8px 10px;cursor:pointer;background:#fff}
+.editAction{border:1px solid #bfdbfe;color:#1d4ed8}
+.deleteAction{border:1px solid #fecaca;color:#dc2626}
+.statusBadge{display:inline-block;padding:5px 9px;border-radius:20px;font-size:12px;font-weight:800;text-transform:capitalize}
+.statusActive{color:#166534;background:#dcfce7}
+.statusInactive{color:#475569;background:#e2e8f0}
+.masterEmpty{padding:35px;text-align:center;color:#64748b}
+
+@media(max-width:800px){
+  .masterDash{grid-template-columns:1fr}
+  .masterSide{position:fixed;top:0;bottom:0;left:-280px;width:260px;z-index:100;transition:left .22s ease}
+  .masterSideOpen{left:0}
+  .masterSidebarBackdrop{display:block;position:fixed;inset:0;z-index:90;padding:0;margin:0;border:0;background:rgba(15,23,42,.45);cursor:pointer}
+  .masterMain{width:100%;height:100vh;grid-template-rows:64px minmax(0,1fr)}
+  .masterHeader{height:64px;grid-template-columns:44px minmax(0,1fr) 44px;padding:0 14px}
+  .masterMenuButton{display:inline-flex}
+  .masterNotificationButton{width:38px;height:38px}
+  .masterOutlet{padding:20px}
+  .masterSide a,.masterSide button{font-size:inherit;justify-content:flex-start}
+  .masterSide .brand{font-size:20px;justify-content:flex-start}
+  .masterPageActions{width:100%;flex-wrap:wrap}
+}
+
+@media(max-width:480px){
+  .masterHeader{padding:0 10px}
+  .masterHeaderCenter strong{font-size:15px}
+  .masterHeaderCenter span{font-size:11px}
+  .masterOutlet{padding:16px}
+}
+
+/* =========================================
+   Dynamic Public Categories
+========================================= */
+
+.categoryBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e6ebf2;
+  min-height: 58px;
+}
+
+.categoryBar button {
+  background: transparent;
+  border: 0;
+  color: #26344a;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.categoryBar button:hover {
+  background: #eaf3ff;
+  color: #0d67e8;
+}
+
+.categoryLoading,
+.categoryEmpty {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* =========================================
+   Master Category Products - Part 3
+========================================= */
+.masterProductsPage{display:grid;gap:20px}.masterProductsPage .pageHead h1{margin:0}.masterProductsPage .pageHead p{margin:6px 0 0;color:#64748b}.masterProductFormCard{padding:24px}.masterProductForm{display:grid;gap:22px}.masterProductTopGrid{display:grid;grid-template-columns:1.2fr .7fr .6fr;gap:14px}.masterProductTopGrid label{display:grid;gap:7px;font-weight:700}.masterProductTopGrid input,.masterProductTopGrid select,.specificationRow input,.specificationRow select{width:100%;padding:12px 13px;border:1px solid #d8e0ec;border-radius:10px;background:#fff}.specificationSection{display:grid;gap:14px}.specificationHead{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.specificationHead h3{margin:0}.specificationHead p{margin:5px 0 0;color:#64748b;font-size:14px}.specificationList{display:grid;gap:10px}.specificationRow{display:grid;grid-template-columns:1.1fr 1fr .7fr 1fr auto auto;gap:10px;align-items:center;padding:12px;border:1px solid #e6ebf2;border-radius:12px;background:#f8fafc}.requiredCheck{display:inline-flex!important;align-items:center;gap:7px;white-space:nowrap;font-weight:700}.requiredCheck input{width:auto!important}.masterImageUploadBlock{display:grid;gap:12px}.masterImageUploadLabel{border:1px dashed #93b6e8;background:#f7fbff;border-radius:14px;padding:22px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;text-align:center;cursor:pointer;color:#24415f}.masterImageUploadLabel small{color:#64748b}.masterImageUploadLabel input{margin-top:8px;max-width:100%}.masterExistingImages,.masterProductThumbs{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.masterExistingImages img{width:90px;height:90px;border-radius:10px;border:1px solid #e6ebf2;object-fit:cover}.masterProductThumbs img{width:42px;height:42px;border-radius:8px;border:1px solid #e6ebf2;object-fit:cover}.masterProductThumbs span{font-size:12px;font-weight:800;color:#64748b}.selectedFileList{display:flex;gap:8px;flex-wrap:wrap}.selectedFileList span{padding:6px 9px;border-radius:20px;background:#eef4ff;color:#1d4ed8;font-size:12px;font-weight:700}.masterProductError{color:#b91c1c;background:#fee2e2;border:1px solid #fecaca;border-radius:10px;padding:10px 12px;font-weight:700}.masterProductSubmitRow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+@media(max-width:1100px){.specificationRow{grid-template-columns:1fr 1fr}.masterProductTopGrid{grid-template-columns:1fr 1fr}.specificationRow .deleteAction{justify-self:start}}
+@media(max-width:700px){.masterProductTopGrid{grid-template-columns:1fr}.specificationHead{flex-direction:column}.specificationRow{grid-template-columns:1fr}.masterProductSubmitRow>*{width:100%;justify-content:center}}
+
+/* =========================================================
+   PART 4 - PUBLIC CATEGORY / PRODUCT / CART
+========================================================= */
+.catalogPage,.productDetailsPage{padding:38px 6vw 60px}.catalogHead{margin-bottom:24px}.catalogHead h1{margin:6px 0 8px}.catalogHead p{margin:0;color:#64748b}.publicProductGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}.publicProductCard{padding:0!important;overflow:hidden;border:1px solid #e6ebf2!important;border-radius:16px!important;background:#fff!important;color:#122033!important;text-align:left;display:block!important;box-shadow:0 8px 30px #1c355b0c}.publicProductCard img{width:100%;height:230px;object-fit:contain;background:#f8fafc;display:block}.publicProductCardBody{padding:16px;display:grid;gap:7px}.publicProductCardBody strong{font-size:17px}.publicProductCardBody span{font-size:20px;font-weight:900;color:#0d67e8}.publicProductCardBody small{color:#64748b}.productDetailsGrid{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);gap:24px;align-items:start}.productImagePanel img{width:100%;max-height:520px;object-fit:contain;background:#f8fafc;border-radius:14px;margin:18px 0}.productImagePanel h2{margin:0 0 6px}.productDetailPrice{font-size:28px;font-weight:900;color:#0d67e8}.publicSpecificationForm{display:grid;gap:14px;margin-top:20px}.publicSpecificationForm label{display:grid;gap:7px;font-weight:700}.publicSpecificationForm input,.publicSpecificationForm textarea,.publicSpecificationForm select{width:100%;padding:13px;border:1px solid #d8e0ec;border-radius:10px;background:#fff}.publicSpecificationForm textarea{min-height:100px;resize:vertical}.cartPart4Page{align-items:start}.cartProductCard{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid #edf0f5}.cartProductCard:last-child{border-bottom:0}.cartProductCard>img{width:150px;height:150px;object-fit:contain;background:#f8fafc;border-radius:12px;border:1px solid #edf0f5}.cartProductInfo{min-width:0}.cartProductTitle{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:12px}.cartProductTitle b{color:#0d67e8;white-space:nowrap}.cartSpecs{display:grid;gap:6px}.cartSpecs>div{display:flex;justify-content:space-between;gap:15px;font-size:14px}.cartSpecs span{color:#64748b}.cartItemActions{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}.cartItemActions label{display:flex!important;align-items:center;gap:7px;margin:0!important}.cartItemActions select{padding:7px 9px;border:1px solid #d8e0ec;border-radius:8px}.cartSummaryPanel{position:sticky;top:92px}
+@media(max-width:800px){.catalogPage,.productDetailsPage{padding:24px 18px 40px}.publicProductGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.publicProductCard img{height:170px}.productDetailsGrid{grid-template-columns:1fr}.cartProductCard{grid-template-columns:90px 1fr;gap:12px}.cartProductCard>img{width:90px;height:90px}.cartProductTitle{flex-direction:column;gap:5px}.cartSpecs>div{display:grid;gap:2px}.cartSummaryPanel{position:static}}
+@media(max-width:480px){.publicProductGrid{grid-template-columns:1fr}.publicProductCard img{height:230px}}
+
+/* Final category bar alignment */
+.categoryBar{justify-content:flex-start;gap:18px;padding:14px 5vw}
+.categoryBar button{flex-shrink:0}    
+
+
+/* =========================================================
+   PART 5 - ADMIN ORDERS
+   Append this block to frontend/src/styles.css
+========================================================= */
+
+.adminOrdersPage {
+  display: grid;
+  gap: 18px;
+}
+
+.adminOrdersHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.adminOrdersHead h1,
+.adminOrderModalHead h2 {
+  margin: 0;
+}
+
+.adminOrdersHead p,
+.adminOrderModalHead p {
+  margin: 6px 0 0;
+  color: #64748b;
+}
+
+.adminOrderSummary,
+.adminOrderFilters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adminOrderSummary span {
+  padding: 8px 12px;
+  border: 1px solid #dbe3ee;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.adminOrderFilters button {
+  border: 1px solid #dbe3ee;
+  background: #fff;
+  color: #334155;
+  border-radius: 9px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.adminOrderFilters button.active {
+  border-color: #1d6fe8;
+  background: #eaf3ff;
+  color: #0d67e8;
+}
+
+.adminOrderError {
+  border: 1px solid #fecaca;
+  background: #fff1f2;
+  color: #b91c1c;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.adminOrdersPanel {
+  overflow: hidden;
+}
+
+.adminOrdersEmpty {
+  padding: 30px;
+  text-align: center;
+  color: #64748b;
+}
+
+.adminOrdersTableWrap {
+  overflow-x: auto;
+}
+
+.adminOrdersTable {
+  min-width: 1050px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.adminOrdersTable th,
+.adminOrdersTable td {
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid #e8edf4;
+  vertical-align: middle;
+}
+
+.adminOrderUserCell,
+.adminOrderContactCell,
+.adminOrderProductCell {
+  display: flex;
+  gap: 9px;
+}
+
+.adminOrderUserCell,
+.adminOrderContactCell {
+  flex-direction: column;
+}
+
+.adminOrderUserCell small,
+.adminOrderProductCell small {
+  color: #64748b;
+}
+
+.adminOrderContactCell span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #475569;
+  font-size: 13px;
+}
+
+.adminOrderProductCell {
+  align-items: center;
+}
+
+.adminOrderProductCell img,
+.adminOrderImageFallback {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  border: 1px solid #dbe3ee;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.adminOrderImageFallback,
+.adminOrderItemImageFallback {
+  display: grid;
+  place-items: center;
+  background: #f1f5f9;
+  font-weight: 800;
+}
+
+.adminOrderProductCell > div:last-child {
+  display: grid;
+  gap: 3px;
+}
+
+.adminOrderStatus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.adminOrderStatus-pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.adminOrderStatus-approved {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.adminOrderActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adminOrderActions button,
+.adminOrderModalHead button {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  background: #fff;
+}
+
+.adminOrderViewAction {
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.adminOrderApproveAction {
+  border: 1px solid #a7f3d0;
+  color: #047857;
+}
+
+.adminOrderApproveAction.selected {
+  background: #ecfdf5;
+  border-color: #34d399;
+}
+
+.adminOrderPendingAction {
+  border: 1px solid #fed7aa;
+  color: #c2410c;
+}
+
+.adminOrderPendingAction.selected {
+  background: #fff7ed;
+  border-color: #fb923c;
+}
+
+.adminOrderActions button:disabled,
+.adminOrderModalActions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.adminOrderModalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.52);
+  overflow-y: auto;
+}
+
+.adminOrderModal {
+  width: min(760px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  display: grid;
+  gap: 18px;
+}
+
+.adminOrderModalHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.adminOrderModalHead button {
+  border: 1px solid #dbe3ee;
+  color: #334155;
+}
+
+.adminOrderCustomerCard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.adminOrderCustomerCard > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.adminOrderCustomerCard span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.adminOrderCustomerCard small {
+  color: #64748b;
+}
+
+.adminOrderCustomerCard strong {
+  overflow-wrap: anywhere;
+}
+
+.adminOrderModalItems {
+  display: grid;
+  gap: 14px;
+}
+
+.adminOrderItemCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 14px;
+}
+
+.adminOrderItemMain {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.adminOrderItemMain img,
+.adminOrderItemImageFallback {
+  width: 130px;
+  height: 130px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.adminOrderItemMain h3,
+.adminOrderItemMain p,
+.adminOrderSpecificationList h4,
+.adminOrderSpecificationList p {
+  margin: 0;
+}
+
+.adminOrderItemMain > div:last-child {
+  display: grid;
+  gap: 7px;
+}
+
+.adminOrderSpecificationList {
+  display: grid;
+  gap: 8px;
+}
+
+.adminOrderSpecificationList > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px dashed #dbe3ee;
+}
+
+.adminOrderSpecificationList span {
+  color: #64748b;
+}
+
+.adminOrderTotalCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  font-size: 18px;
+}
+
+.adminOrderTotalCard strong {
+  font-size: 22px;
+}
+
+.adminOrderModalMeta {
+  display: flex;
+  gap: 10px 18px;
+  flex-wrap: wrap;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.adminOrderModalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adminOrderModalActions button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.adminOrderApproveButton {
+  border: 1px solid #10b981;
+  background: #059669;
+  color: #fff;
+}
+
+.adminOrderPendingButton {
+  border: 1px solid #fdba74;
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+@media (max-width: 720px) {
+  .adminOrderCustomerCard {
+    grid-template-columns: 1fr;
+  }
+
+  .adminOrderItemMain {
+    flex-direction: column;
+  }
+
+  .adminOrderItemMain img,
+  .adminOrderItemImageFallback {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .adminOrderSpecificationList > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .adminOrderModalActions button {
+    flex: 1 1 160px;
+  }
+}
+
+
+/* =========================================================
+   PART 8 - INSTANT QR SCAN ALERTS + ACCOUNT RECOVERY UI
+   Existing styles above are preserved unchanged.
+========================================================= */
+
+.notificationBellBtn{
+  position:relative;
+  min-width:38px;
+  min-height:38px;
+  justify-content:center;
+}
+
+.notificationBellBadge{
+  position:absolute;
+  top:-6px;
+  right:-7px;
+  min-width:19px;
+  height:19px;
+  padding:0 5px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  background:#ff7a00;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  line-height:1;
+  border:2px solid #0d67e8;
+}
+
+.accountDash{
+  background:#f5f7fb;
+}
+
+.accountSidebar{
+  background:#fff;
+  color:#26344a;
+  border-right:1px solid #e6ebf2;
+}
+
+.accountSidebar .brand{
+  color:#122033;
+}
+
+.accountSidebar .brand .logo{
+  background:#0d67e8;
+  color:#fff;
+}
+
+.accountSidebar a,
+.accountSidebar button{
+  color:#475569;
+  cursor:pointer;
+}
+
+.accountSidebar a:hover,
+.accountSidebar button:hover{
+  background:#f1f6ff;
+  color:#0d67e8;
+}
+
+.accountSidebar a.active{
+  background:#eaf3ff;
+  color:#0d67e8;
+  font-weight:800;
+}
+
+.accountSidebar a{
+  position:relative;
+}
+
+.sideCountBadge{
+  margin-left:auto;
+  min-width:22px;
+  height:22px;
+  padding:0 6px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  background:#0d67e8;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+}
+
+.accountBody{
+  background:#f5f7fb;
+}
+
+.accountPage{
+  display:grid;
+  gap:20px;
+}
+
+.accountPageHead h1{
+  margin:5px 0 7px;
+}
+
+.accountPageHead p{
+  margin:0;
+  color:#64748b;
+  max-width:760px;
+}
+
+.recoveryScanCard{
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+.recoveryScanCard:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 38px rgba(28,53,91,.10);
+}
+
+.scanCardContent{
+  min-width:0;
+}
+
+.scanCardTopline{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.scanCardTopline h3{
+  margin:0;
+}
+
+.scanTime{
+  color:#64748b;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+.notificationList{
+  display:grid;
+  gap:14px;
+}
+
+.accountAlertCard{
+  position:relative;
+  padding:20px;
+}
+
+.notificationHeading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+}
+
+.notificationHeading h3{
+  margin:0 0 5px;
+}
+
+.notificationHeading p{
+  margin:0;
+  color:#475569;
+}
+
+.unreadDot{
+  width:10px;
+  height:10px;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:#0d67e8;
+  margin-top:6px;
+}
+
+.notificationScanDetails{
+  margin-top:15px;
+  padding-top:15px;
+  border-top:1px solid #edf0f5;
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:16px;
+}
+
+.notificationScanDetails>img{
+  width:110px;
+  height:110px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid #e6ebf2;
+}
+
+.notificationScanDetails p{
+  margin:5px 0;
+}
+
+.scanPortalBackdrop{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(15,23,42,.52);
+  backdrop-filter:blur(3px);
+}
+
+.scanPortalCard{
+  position:relative;
+  width:min(94vw,520px);
+  max-height:calc(100vh - 40px);
+  overflow:auto;
+  background:#fff;
+  border:1px solid #dbe5f1;
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 30px 90px rgba(15,23,42,.28);
+  animation:scanPortalIn .22s ease-out;
+}
+
+@keyframes scanPortalIn{
+  from{opacity:0;transform:translateY(12px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.scanPortalClose{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border:1px solid #e2e8f0;
+  border-radius:10px;
+  background:#fff;
+  color:#475569;
+  cursor:pointer;
+}
+
+.scanPortalIcon{
+  width:54px;
+  height:54px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:#eaf3ff;
+  color:#0d67e8;
+  margin-bottom:16px;
+}
+
+.scanPortalCard h2{
+  margin:6px 0 7px;
+  font-size:27px;
+}
+
+.scanPortalMessage{
+  margin:0;
+  color:#64748b;
+  line-height:1.55;
+}
+
+.scanPortalDetails{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:20px;
+}
+
+.scanPortalDetails>div{
+  min-width:0;
+  border:1px solid #e6ebf2;
+  border-radius:12px;
+  padding:11px;
+  background:#f8fafc;
+}
+
+.scanPortalDetails span,
+.scanPortalDetails strong{
+  display:block;
+}
+
+.scanPortalDetails span{
+  color:#64748b;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.scanPortalDetails strong{
+  color:#122033;
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+
+.scanPortalComment{
+  margin-top:14px;
+  padding:13px 14px;
+  border-radius:12px;
+  background:#f8fafc;
+  color:#334155;
+  line-height:1.5;
+}
+
+.scanPortalActions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.scanPortalTimer{
+  display:block;
+  margin-top:14px;
+  color:#94a3b8;
+}
+
+@media(max-width:800px){
+  .accountSidebar .sideCountBadge{
+    position:absolute;
+    top:4px;
+    right:4px;
+    margin:0;
+  }
+
+  .scanPortalDetails{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:700px){
+  .scanCardTopline{
+    flex-direction:column;
+    gap:5px;
+  }
+
+  .scanTime{
+    white-space:normal;
+  }
+
+  .notificationScanDetails{
+    grid-template-columns:1fr;
+  }
+
+  .notificationScanDetails>img{
+    width:100%;
+    height:220px;
+  }
+
+  .scanPortalCard{
+    padding:24px 18px 20px;
+  }
+
+  .scanPortalActions>*{
+    flex:1 1 140px;
+    justify-content:center;
+  }
+}
+
+
+:root {
+  --am-bg: #f5f7fb;
+  --am-card: #ffffff;
+  --am-text: #172033;
+  --am-muted: #6b7280;
+  --am-border: #e5e7eb;
+  --am-primary: #2563eb;
+  --am-primary-dark: #1d4ed8;
+  --am-side: #101827;
+}
+
+.amAuthPage { min-height: 100vh; display: grid; place-items: center; padding: 32px 18px; background: var(--am-bg); color: var(--am-text); }
+.amAuthCard { width: min(100%, 520px); background: #fff; border: 1px solid var(--am-border); border-radius: 20px; padding: 30px; box-shadow: 0 18px 50px rgba(15,23,42,.08); }
+.amAuthCard.wide { width: min(100%, 650px); }
+.amAuthCard h1, .amPageHead h1, .amPanel h1 { margin: 8px 0 10px; color: var(--am-text); }
+.amAuthCard p, .amPageHead p, .amPanel p { color: var(--am-muted); line-height: 1.6; }
+.amEyebrow { font-size: 12px; font-weight: 800; letter-spacing: .11em; color: var(--am-primary); }
+.amForm { display: grid; gap: 14px; margin-top: 22px; }
+.amForm label { display: grid; gap: 7px; font-size: 13px; font-weight: 700; color: #374151; }
+.amForm input { width: 100%; box-sizing: border-box; border: 1px solid #d8dee9; border-radius: 10px; padding: 12px 13px; font: inherit; background: #fff; }
+.amForm input:focus { outline: 2px solid rgba(37,99,235,.16); border-color: var(--am-primary); }
+.amForm input:disabled { background: #f3f4f6; color: #6b7280; }
+.amTwoCol { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.amPrimary { border: 0; border-radius: 10px; background: var(--am-primary); color: #fff; padding: 12px 18px; font-weight: 800; cursor: pointer; text-align: center; }
+.amPrimary:hover { background: var(--am-primary-dark); }
+.amPrimary:disabled { opacity: .6; cursor: not-allowed; }
+.amPrimary.link { display: inline-block; text-decoration: none; margin-top: 10px; }
+.amAuthFoot { text-align: center; font-size: 14px; margin-top: 18px; }
+.amAuthFoot a { color: var(--am-primary); font-weight: 700; }
+.amMessage { margin-top: 16px; padding: 11px 13px; border-radius: 10px; background: #eff6ff; color: #1e40af !important; }
+.amMessage.error { background: #fef2f2; color: #b91c1c !important; }
+.amStatusBox { margin-top: 22px; padding: 20px; border: 1px solid var(--am-border); border-radius: 14px; background: #fafafa; }
+.amStatusBox.pending { background: #fff7ed; border-color: #fed7aa; }
+.amStatusBox.success { background: #f0fdf4; border-color: #bbf7d0; }
+
+.amShell { min-height: 100vh; display: grid; grid-template-columns: 255px 1fr; background: var(--am-bg); color: var(--am-text); }
+.amSidebar { position: sticky; top: 0; height: 100vh; background: var(--am-side); color: #e5e7eb; padding: 22px 14px; display: flex; flex-direction: column; box-sizing: border-box; }
+.amBrand { display: flex; gap: 11px; align-items: center; padding: 4px 8px 24px; border-bottom: 1px solid rgba(255,255,255,.09); margin-bottom: 18px; }
+.amBrand > span { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: var(--am-primary); color: #fff; font-weight: 900; }
+.amBrand div { display: grid; }
+.amBrand small { color: #9ca3af; margin-top: 2px; }
+.amSidebar nav { display: grid; gap: 5px; }
+.amSidebar nav a, .amSideToggle, .amLogout { display: flex; align-items: center; gap: 10px; width: 100%; box-sizing: border-box; border: 0; border-radius: 10px; padding: 11px 12px; color: #cbd5e1; background: transparent; text-decoration: none; font: inherit; cursor: pointer; }
+.amSidebar nav a:hover, .amSidebar nav a.active, .amSideToggle:hover { background: rgba(255,255,255,.09); color: #fff; }
+.amSideToggle svg:last-child { margin-left: auto; transition: transform .2s; }
+.amSideToggle svg.rotated { transform: rotate(180deg); }
+.amSubNav { padding-left: 20px; display: grid; gap: 3px; }
+.amSubNav a { font-size: 14px; }
+.amLogout { margin-top: auto; color: #fecaca; }
+.amLogout:hover { background: rgba(239,68,68,.12); }
+.amMain { min-width: 0; }
+.amTopbar { height: 72px; padding: 0 28px; background: #fff; border-bottom: 1px solid var(--am-border); display: flex; align-items: center; }
+.amTopbar div { display: grid; gap: 3px; }
+.amTopbar span { color: var(--am-muted); font-size: 13px; }
+.amContent { padding: 28px; }
+.amPageHead { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; }
+.amStats { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 15px; }
+.amStats > div { background: #fff; border: 1px solid var(--am-border); border-radius: 14px; padding: 20px; display: grid; gap: 8px; }
+.amStats span { color: var(--am-muted); font-size: 13px; }
+.amStats strong { font-size: 19px; text-transform: capitalize; }
+.amNotice { margin-top: 18px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 15px; color: #92400e; }
+.amPanel { background: #fff; border: 1px solid var(--am-border); border-radius: 16px; padding: 24px; }
+.amPanel.narrow { max-width: 720px; }
+.amKycStatus { display: inline-block; padding: 7px 11px; border-radius: 999px; background: #f3f4f6; font-size: 13px; text-transform: capitalize; }
+.amKycStatus.verified { background: #dcfce7; color: #166534; }
+.amKycStatus.pending { background: #fef3c7; color: #92400e; }
+.amKycStatus.rejected { background: #fee2e2; color: #991b1b; }
+
+.amProductGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.amProductCard { background: #fff; border: 1px solid var(--am-border); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(15,23,42,.04); }
+.amProductCard > img, .amProductPlaceholder { width: 100%; height: 210px; object-fit: cover; background: #eef2ff; display: grid; place-items: center; font-size: 28px; font-weight: 900; color: var(--am-primary); }
+.amProductBody { padding: 18px; }
+.amProductBody h3 { margin: 8px 0; }
+.amProductStatus { font-size: 12px; color: #15803d; font-weight: 800; }
+.amPrice { display: block; font-size: 20px; margin: 8px 0 12px; }
+.amReferralLink { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #f8fafc; border: 1px solid var(--am-border); border-radius: 8px; padding: 9px; font-size: 12px; color: #475569; }
+.amActions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+.amActions button, .amActions a { border: 1px solid #dbe2ea; background: #fff; color: #334155; border-radius: 9px; padding: 9px 10px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; }
+.amActions button:hover, .amActions a:hover { border-color: var(--am-primary); color: var(--am-primary); }
+.amEmpty { grid-column: 1/-1; background: #fff; border: 1px dashed #cbd5e1; border-radius: 14px; padding: 36px; text-align: center; color: var(--am-muted); }
+.amToast { position: fixed; right: 24px; top: 24px; z-index: 9999; background: #111827; color: #fff; padding: 13px 18px; border-radius: 10px; box-shadow: 0 14px 34px rgba(0,0,0,.2); }
+
+@media (max-width: 900px) {
+  .amShell { grid-template-columns: 1fr; }
+  .amSidebar { position: relative; height: auto; }
+  .amStats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .amTopbar { height: auto; min-height: 64px; padding: 14px 18px; }
+  .amContent { padding: 18px; }
+}
+@media (max-width: 560px) {
+  .amTwoCol, .amStats { grid-template-columns: 1fr; }
+  .amAuthCard { padding: 22px 18px; }
+  .amContent { padding: 14px; }
+}    
+
+
+/* =========================================================
+   MASTER CATEGORY PORTAL / MODAL
+========================================================= */
+
+.masterCategoriesPage {
+  min-width: 0;
+}
+
+.masterCategoryModalBackdrop {
+  position: fixed;
+  inset: 0;
+
+  z-index: 5000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, 0.48);
+
+  overflow-y: auto;       
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.masterCategoryModal {
+  width: min(100%, 560px);
+
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  padding: 24px;
+}
+
+.masterCategoryModalHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 22px;
+}
+
+.masterCategoryModalHead h2 {
+  margin: 6px 0 0;
+}
+
+.masterCategoryModalHead p {
+  margin: 7px 0 0;
+
+  color: #64748b;
+}
+
+.masterCategoryModalClose {
+  width: 40px;
+  height: 40px;
+
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #475569;
+
+  cursor: pointer;
+}
+
+.masterCategoryModalClose:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.masterCategoryModalForm {
+  display: grid;
+  gap: 17px;
+}
+
+.masterCategoryModalForm label {
+  display: grid;
+  gap: 8px;
+
+  font-weight: 700;
+}
+
+.masterCategoryModalForm input,
+.masterCategoryModalForm textarea,
+.masterCategoryModalForm select {
+  width: 100%;
+
+  padding: 12px 13px;
+
+  border: 1px solid #d8e0ec;
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+.masterCategoryModalForm textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.masterCategoryModalActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 4px;
+}
+
+.masterRefreshSpin {
+  animation: masterRefreshSpin 0.8s linear infinite;
+}
+
+@keyframes masterRefreshSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .masterCategoryModalBackdrop {
+    padding: 12px;
+  }
+
+  .masterCategoryModal {
+    width: 100%;
+
+    max-height: calc(100vh - 24px);
+
+    padding: 20px 16px;
+  }
+
+  .masterCategoryModalActions {
+    flex-direction: column-reverse;
+  }
+
+  .masterCategoryModalActions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================================
+   MASTER CATEGORY PRODUCTS - PORTAL + TABLE LAYOUT
+   Existing project styles above are preserved.
+========================================================= */
+
+.masterProductsPageHead {
+  align-items: flex-start;
+}
+
+.masterProductsTablePanel {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.masterProductsTableWrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.masterProductsTable {
+  min-width: 980px;
+}
+
+.masterProductsTable th,
+.masterProductsTable td {
+  vertical-align: middle;
+}
+
+.masterSpecificationSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 360px;
+}
+
+.masterSpecificationSummary span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 27px;
+  padding: 5px 9px;
+  border: 1px solid #dbe3ee;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.masterSpecificationSummary small {
+  display: inline-flex;
+  align-items: center;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.masterProductViewAction {
+  padding: 8px 10px;
+}
+
+.masterProductPortalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 6000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, 0.35);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  overflow-y: auto;
+}
+
+.masterProductPortal,
+.masterProductViewPortal {
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.masterProductViewPortal {
+  width: min(900px, 100%);
+}
+
+.masterProductPortalHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.masterProductPortalHead h2 {
+  margin: 6px 0 0;
+}
+
+.masterProductPortalHead p {
+  margin: 7px 0 0;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.masterProductPortalClose {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+}
+
+.masterProductPortalClose:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.masterProductPortalForm {
+  display: grid;
+  gap: 24px;
+}
+
+.masterProductPortalForm .masterProductTopGrid {
+  grid-template-columns: minmax(220px, 1.2fr) minmax(160px, .7fr) minmax(160px, .6fr);
+}
+
+.masterProductPortalForm .masterProductTopGrid label {
+  margin: 0;
+}
+
+.masterProductPortalForm .masterProductTopGrid input,
+.masterProductPortalForm .masterProductTopGrid select {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #d8e0ec;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.masterProductSpecSection,
+.masterProductImagesSection,
+.masterProductViewBlock {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.masterProductSpecSection h3,
+.masterProductImagesSection h3,
+.masterProductViewBlock h3 {
+  margin: 0;
+}
+
+.masterProductImagesSection > div:first-child p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.masterSpecTableWrap,
+.masterProductViewSpecTableWrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.masterSpecTable,
+.masterProductViewSpecTable {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.masterProductViewSpecTable {
+  min-width: 700px;
+}
+
+.masterSpecTable th,
+.masterSpecTable td,
+.masterProductViewSpecTable th,
+.masterProductViewSpecTable td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.masterSpecTable th,
+.masterProductViewSpecTable th {
+  background: #f8fafc;
+  color: #475569;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.masterSpecTable input,
+.masterSpecTable select {
+  width: 100%;
+  min-width: 140px;
+  padding: 10px 11px;
+  border: 1px solid #d8e0ec;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.masterSpecRequired {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 7px;
+  margin: 0 !important;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.masterSpecRequired input {
+  min-width: auto;
+  width: auto;
+}
+
+.masterSpecDelete {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+}
+
+.masterAddSpecBottom {
+  justify-self: start;
+}
+
+.masterProductImagesSection .masterImageUploadLabel {
+  margin: 0;
+}
+
+.masterProductImageLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.masterProductPortalImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.masterProductPortalImage {
+  min-width: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px;
+  background: #f8fafc;
+}
+
+.masterProductPortalImage img {
+  width: 100%;
+  height: 115px;
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.masterProductPortalImage span {
+  display: block;
+  margin-top: 7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.masterProductPortalActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  position: sticky;
+  bottom: -24px;
+  margin: 0 -24px -24px;
+  padding: 16px 24px;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.masterProductViewSummary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.masterProductViewSummary > div {
+  display: grid;
+  gap: 5px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.masterProductViewSummary span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.masterProductViewSummary strong {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .masterProductPortalBackdrop {
+    padding: 12px;
+  }
+
+  .masterProductPortal,
+  .masterProductViewPortal {
+    max-height: calc(100vh - 24px);
+    padding: 20px 16px;
+  }
+
+  .masterProductPortalForm .masterProductTopGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .masterProductPortalActions {
+    bottom: -20px;
+    margin: 0 -16px -20px;
+    padding: 14px 16px;
+  }
+
+  .masterProductViewSummary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .masterProductsPage .pageHead {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .masterProductsPage .masterPageActions {
+    width: 100%;
+  }
+
+  .masterProductsPage .masterPageActions button {
+    flex: 1 1 150px;
+    justify-content: center;
+  }
+
+  .masterProductPortalHead {
+    gap: 12px;
+  }
+
+  .masterProductPortalImages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .masterProductPortalActions {
+    flex-direction: column-reverse;
+  }
+
+  .masterProductPortalActions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================================
+   ADMIN PANEL - BASE LAYOUT
+   Dedicated admin classes so existing user/master layouts stay unchanged.
+========================================================= */
+
+.adminDash {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+
+  overflow: hidden;
+  background: #f4f7fb;
+}
+
+.adminSidebar {
+  width: 260px;
+  height: 100vh;
+  min-height: 100vh;
+
+  position: relative;
+  z-index: 40;
+
+  background: #111827;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.adminSidebar .adminBrand {
+  flex-shrink: 0;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.adminSidebar .adminBrand .logo {
+  flex-shrink: 0;
+}
+
+.adminNav {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.adminNav a {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.adminNav a svg,
+.adminLogout svg {
+  flex-shrink: 0;
+}
+
+.adminNav a span {
+  min-width: 0;
+}
+
+.adminLogout {
+  width: 100%;
+
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.adminMain {
+  min-width: 0;
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: 70px minmax(0, 1fr);
+
+  overflow: hidden;
+}
+
+.adminHeader {
+  width: 100%;
+  height: 70px;
+
+  position: relative;
+  z-index: 30;
+
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 52px;
+
+  align-items: center;
+
+  padding: 0 24px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e6ebf2;
+}
+
+.adminHeaderLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.adminHeaderCenter {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.adminHeaderCenter strong {
+  display: block;
+
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.adminHeaderCenter span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.adminHeaderRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.adminMenuButton {
+  width: 40px;
+  height: 40px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #d8e0ec;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #334155;
+
+  cursor: pointer;
+}
+
+.adminNotificationButton {
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #334155;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.adminNotificationButton:hover {
+  background: #f8fafc;
+}
+
+.adminNotificationBadge {
+  position: absolute;
+
+  top: -5px;
+  right: -5px;
+
+  min-width: 18px;
+  height: 18px;
+
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  background: #ef4444;
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  border: 2px solid #ffffff;
+}
+
+.adminOutlet {
+  min-width: 0;
+  min-height: 0;
+
+  padding: 30px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: #f4f7fb;
+}
+
+.adminSidebarBackdrop {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .adminDash {
+    grid-template-columns: 1fr;
+  }
+
+  .adminSidebar {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    left: -280px;
+
+    width: 260px;
+
+    z-index: 100;
+
+    transition: left 0.22s ease;
+  }
+
+  .adminSidebarOpen {
+    left: 0;
+  }
+
+  .adminSidebarBackdrop {
+    display: block;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 90;
+
+    padding: 0;
+    margin: 0;
+
+    border: 0;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    cursor: pointer;
+  }
+
+  .adminMain {
+    width: 100%;
+    height: 100vh;
+
+    grid-template-rows: 64px minmax(0, 1fr);
+  }
+
+  .adminHeader {
+    height: 64px;
+
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+
+    padding: 0 14px;
+  }
+
+  .adminMenuButton {
+    display: inline-flex;
+  }
+
+  .adminNotificationButton {
+    width: 38px;
+    height: 38px;
+  }
+
+  .adminOutlet {
+    padding: 20px;
+  }
+
+  .adminSidebar a,
+  .adminSidebar button {
+    font-size: inherit;
+    justify-content: flex-start;
+  }
+
+  .adminSidebar .brand {
+    font-size: 20px;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .adminHeader {
+    padding: 0 10px;
+  }
+
+  .adminHeaderCenter strong {
+    font-size: 15px;
+  }
+
+  .adminHeaderCenter span {
+    font-size: 11px;
+  }
+
+  .adminOutlet {
+    padding: 16px;
+  }
+}
+
+/* =========================================================
+   MASTER PRODUCT - SIMPLE SPECIFICATION UI OVERRIDES
+========================================================= */
+.simpleMasterSpecs{gap:12px}
+.simpleMasterSpecs .specificationHead{align-items:center}
+.simpleMasterSpecs .specificationHead h3{margin:0}
+.masterSimpleSpecTableWrap{width:100%;overflow-x:auto;border:1px solid #e2e8f0;border-radius:12px}
+.masterSimpleSpecTable{width:100%;border-collapse:collapse;background:#fff}
+.masterSimpleSpecTable th,.masterSimpleSpecTable td{padding:10px;text-align:left;vertical-align:middle;border-bottom:1px solid #edf0f5}
+.masterSimpleSpecTable th{background:#f8fafc;color:#475569;font-size:12px}
+.masterSimpleSpecTable th:last-child,.masterSimpleSpecTable td:last-child{width:90px;text-align:center}
+.masterSimpleSpecTable input{width:100%;padding:10px 11px;border:1px solid #d8e0ec;border-radius:8px;background:#fff}
+.simpleMasterImages{gap:12px}
+.simpleSectionTitle h3{margin:0}
+.simpleMasterImages .masterImageUploadLabel{margin:0}
+@media(max-width:600px){.simpleMasterSpecs .specificationHead{align-items:stretch;flex-direction:column}.simpleMasterSpecs .specificationHead button{width:100%;justify-content:center}.masterSimpleSpecTable th:last-child,.masterSimpleSpecTable td:last-child{width:70px}}
+
+/* =========================================================
+   MASTER PRODUCT SPECIFICATIONS - FIELD + VALUE
+========================================================= */
+
+.masterSimpleSpecTable th:first-child,
+.masterSimpleSpecTable td:first-child {
+  width: 42%;
+}
+
+.masterSimpleSpecTable th:nth-child(2),
+.masterSimpleSpecTable td:nth-child(2) {
+  width: auto;
+}
+
+.masterSimpleSpecTable th:last-child,
+.masterSimpleSpecTable td:last-child {
+  width: 90px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .masterSimpleSpecTable {
+    min-width: 620px;
+  }
+}

@@ -1,51 +1,42 @@
-import { NavLink, Outlet } from "react-router-dom";
-import {
-  LayoutDashboard,
-  LogOut,
-  PackageCheck,
-  ScanLine,
-  Users,
-} from "lucide-react";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
-import { logout } from "../store/auth";
+import AdminSidebar from "../pages/admin/AdminSidebar";
+import AdminHeader from "../pages/admin/AdminHeader";
 
 export default function AdminLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
+  const toggleSidebar = () => {
+    setSidebarOpen((current) => !current);
+  };
+
   return (
-    <div className="dash">
-      <aside className="sidebar adminSide">
-        <div className="brand">
-          <span className="logo">A</span>
-          Admin
-        </div>
+    <div className="adminDash">
+      <AdminSidebar
+        open={sidebarOpen}
+        onNavigate={closeSidebar}
+      />
 
-        <NavLink to="/admin/dashboard">
-          <LayoutDashboard />
-          Dashboard
-        </NavLink>
+      {sidebarOpen && (
+        <button
+          type="button"
+          className="adminSidebarBackdrop"
+          aria-label="Close admin sidebar"
+          onClick={closeSidebar}
+        />
+      )}
 
-        <NavLink to="/admin/users">
-          <Users />
-          Users
-        </NavLink>
+      <section className="adminMain">
+        <AdminHeader onMenuClick={toggleSidebar} />
 
-        <NavLink to="/admin/orders">
-          <PackageCheck />
-          Orders
-        </NavLink>
-
-        <NavLink to="/admin/scans">
-          <ScanLine />
-          Scan Events
-        </NavLink>
-
-        <button onClick={() => logout()}>
-          <LogOut />
-          Logout
-        </button>
-      </aside>
-
-      <section className="dashBody">
-        <Outlet />
+        <main className="adminOutlet">
+          <Outlet />
+        </main>
       </section>
     </div>
   );

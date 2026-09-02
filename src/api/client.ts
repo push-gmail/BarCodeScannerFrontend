@@ -13,10 +13,18 @@ export const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-
-  if (token) {
+  const publicRoutes = [
+    "/auth/user/register",
+    "/auth/user/login",
+    "/auth/user/forgot-password",
+    "/auth/user/reset-password",
+    "/auth/affiliate/login",
+    "/auth/admin/login",
+    "/public/affiliate/referral",
+  ];
+  const isPublicRequest = publicRoutes.some((route) => config.url?.includes(route));
+  if (token && !isPublicRequest) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-
   return config;
 });

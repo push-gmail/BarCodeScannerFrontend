@@ -1,21 +1,75 @@
-export type AppRole = "user" | "admin";
+export type AppRole =
+  | "user"
+  | "affiliate"
+  | "admin"
+  | "master";
 
-export function saveSession(token: string, role: AppRole) {
+/* =========================================================
+   SAVE SESSION
+========================================================= */
+
+export function saveSession(
+  token: string,
+  role: AppRole,
+) {
   localStorage.setItem("token", token);
   localStorage.setItem("role", role);
+
+  window.dispatchEvent(new Event("auth:changed"));
 }
+
+/* =========================================================
+   CLEAR SESSION
+========================================================= */
 
 export function clearSession() {
   localStorage.removeItem("token");
   localStorage.removeItem("role");
+
+  window.dispatchEvent(new Event("auth:changed"));
 }
 
-export function logout(redirectTo = "/") {
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+export function logout(
+  redirectTo = "/",
+) {
   clearSession();
   window.location.href = redirectTo;
 }
 
-export const hasToken = () => Boolean(localStorage.getItem("token"));
-export const getRole = () => localStorage.getItem("role") as AppRole | null;
-export const isUserSession = () => hasToken() && getRole() === "user";
-export const isAdminSession = () => hasToken() && getRole() === "admin";
+/* =========================================================
+   SESSION HELPERS
+========================================================= */
+
+export const hasToken = () =>
+  Boolean(
+    localStorage.getItem("token"),
+  );
+
+export const getRole = () =>
+  localStorage.getItem(
+    "role",
+  ) as AppRole | null;
+
+/* =========================================================
+   ROLE CHECKS
+========================================================= */
+
+export const isUserSession = () =>
+  hasToken() &&
+  getRole() === "user";
+
+export const isAffiliateSession = () =>
+  hasToken() &&
+  getRole() === "affiliate";
+
+export const isAdminSession = () =>
+  hasToken() &&
+  getRole() === "admin";
+
+export const isMasterSession = () =>
+  hasToken() &&
+  getRole() === "master";
