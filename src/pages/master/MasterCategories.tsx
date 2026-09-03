@@ -336,7 +336,11 @@ export default function MasterCategories() {
                         {category.status}
                       </span>
                     </td>
-                    <td>{new Date(category.createdAt).toLocaleDateString()}</td>
+                  <td>
+  {category.createdAt
+    ? new Date(category.createdAt).toLocaleDateString()
+    : "-"}
+</td>
                     <td>
                       <div className="categoryActions">
                         <button

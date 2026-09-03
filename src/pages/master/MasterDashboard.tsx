@@ -18,7 +18,12 @@ export default function MasterDashboard() {
 
   useEffect(() => {
     getMasterDashboard()
-      .then((response) => setStats(response.data))
+   .then((response) =>
+  setStats({
+    categories: response.data.data?.categories ?? 0,
+    products: response.data.data?.products ?? 0,
+  }),
+)
       .catch((err) =>
         setMsg(err?.response?.data?.message || "Failed to load dashboard"),
       )
