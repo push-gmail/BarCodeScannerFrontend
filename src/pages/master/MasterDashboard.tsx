@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
-import { getMasterDashboard } from "../../api/masterApi"
+
+import { getMasterDashboard } from "../../api/masterApi";
 
 type Stats = {
   totalCategories: number;
   activeCategories: number;
   inactiveCategories: number;
+};
+
+type DashboardApiData = {
+  categories?: number;
+  totalCategories?: number;
+  activeCategories?: number;
+  inactiveCategories?: number;
 };
 
 export default function MasterDashboard() {
@@ -13,21 +21,37 @@ export default function MasterDashboard() {
     activeCategories: 0,
     inactiveCategories: 0,
   });
+
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
     getMasterDashboard()
-   .then((response) =>
-  setStats({
-    categories: response.data.data?.categories ?? 0,
-    products: response.data.data?.products ?? 0,
-  }),
-)
-      .catch((err) =>
-        setMsg(err?.response?.data?.message || "Failed to load dashboard"),
-      )
-      .finally(() => setLoading(false));
+      .then((response) => {
+        const dashboardData = response.data.data as
+          | DashboardApiData
+          | undefined;
+
+        setStats({
+          totalCategories:
+            dashboardData?.totalCategories ??
+            dashboardData?.categories ??
+            0,
+          activeCategories:
+            dashboardData?.activeCategories ?? 0,
+          inactiveCategories:
+            dashboardData?.inactiveCategories ?? 0,
+        });
+      })
+      .catch((err) => {
+        setMsg(
+          err?.response?.data?.message ||
+            "Failed to load dashboard",
+        );
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -44,9 +68,20 @@ export default function MasterDashboard() {
         <p>Loading dashboard...</p>
       ) : (
         <div className="stats">
-          <div><b>{stats.totalCategories}</b><span>Total Categories</span></div>
-          <div><b>{stats.activeCategories}</b><span>Active Categories</span></div>
-          <div><b>{stats.inactiveCategories}</b><span>Inactive Categories</span></div>
+          <div>
+            <b>{stats.totalCategories}</b>
+            <span>Total Categories</span>
+          </div>
+
+          <div>
+            <b>{stats.activeCategories}</b>
+            <span>Active Categories</span>
+          </div>
+
+          <div>
+            <b>{stats.inactiveCategories}</b>
+            <span>Inactive Categories</span>
+          </div>
         </div>
       )}
 
