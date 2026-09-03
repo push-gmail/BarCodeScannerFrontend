@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-import {
-  Edit3,
-  Plus,
-  RefreshCw,
-  Trash2,
-  X,
-} from "lucide-react";
+import { Edit3, Plus, RefreshCw, Trash2, X } from "lucide-react";
 
 import {
   createMasterCategory,
@@ -15,26 +9,18 @@ import {
   getMasterCategories,
   updateMasterCategory,
   type CategoryPayload,
+  type MasterCategory,
 } from "../../api/masterApi";
-
-type Category = {
-  _id: string;
-  name: string;
-  slug: string;
-  description: string;
-  status: "active" | "inactive";
-  createdAt: string;
-  updatedAt: string;
-};
 
 const emptyForm: CategoryPayload = {
   name: "",
+  slug: "",
   description: "",
   status: "active",
 };
 
 export default function MasterCategories() {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<MasterCategory[]>([]);
   const [form, setForm] = useState<CategoryPayload>(emptyForm);
 
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -51,13 +37,9 @@ export default function MasterCategories() {
 
     try {
       const { data } = await getMasterCategories();
-
       setCategories(data.categories || []);
     } catch (err: any) {
-      setMsg(
-        err?.response?.data?.message ||
-          "Failed to load categories",
-      );
+      setMsg(err?.response?.data?.message || "Failed to load categories");
     } finally {
       setLoading(false);
     }
@@ -85,29 +67,23 @@ export default function MasterCategories() {
 
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener(
-        "keydown",
-        handleEscape,
-      );
+      window.removeEventListener("keydown", handleEscape);
     };
   }, [formOpen, saving]);
 
   const openCreate = () => {
     setEditingId(null);
-
-    setForm({
-      ...emptyForm,
-    });
-
+    setForm({ ...emptyForm });
     setMsg("");
     setFormOpen(true);
   };
 
-  const openEdit = (category: Category) => {
+  const openEdit = (category: MasterCategory) => {
     setEditingId(category._id);
 
     setForm({
       name: category.name,
+      slug: category.slug || "",
       description: category.description || "",
       status: category.status,
     });
@@ -121,15 +97,10 @@ export default function MasterCategories() {
 
     setFormOpen(false);
     setEditingId(null);
-
-    setForm({
-      ...emptyForm,
-    });
+    setForm({ ...emptyForm });
   };
 
-  const submit = async (
-    e: React.FormEvent<HTMLFormElement>,
-  ) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!form.name.trim()) {
@@ -142,72 +113,37 @@ export default function MasterCategories() {
 
     try {
       if (editingId) {
-        const { data } =
-          await updateMasterCategory(
-            editingId,
-            form,
-          );
-
-        setMsg(
-          data.message ||
-            "Category updated successfully",
-        );
+        const { data } = await updateMasterCategory(editingId, form);
+        setMsg(data.message || "Category updated successfully");
       } else {
-        const { data } =
-          await createMasterCategory(form);
-
-        setMsg(
-          data.message ||
-            "Category created successfully",
-        );
+        const { data } = await createMasterCategory(form);
+        setMsg(data.message || "Category created successfully");
       }
 
       setFormOpen(false);
       setEditingId(null);
-
-      setForm({
-        ...emptyForm,
-      });
+      setForm({ ...emptyForm });
 
       await loadCategories();
     } catch (err: any) {
-      setMsg(
-        err?.response?.data?.message ||
-          "Something went wrong",
-      );
+      setMsg(err?.response?.data?.message || "Something went wrong");
     } finally {
       setSaving(false);
     }
   };
 
-  const removeCategory = async (
-    category: Category,
-  ) => {
-    const confirmed = window.confirm(
-      `Delete "${category.name}" category?`,
-    );
-
+  const removeCategory = async (category: MasterCategory) => {
+    const confirmed = window.confirm(`Delete "${category.name}" category?`);
     if (!confirmed) return;
 
     setMsg("");
 
     try {
-      const { data } =
-        await deleteMasterCategory(
-          category._id,
-        );
-
-      setMsg(
-        data.message ||
-          "Category deleted successfully",
-      );
-
+      const { data } = await deleteMasterCategory(category._id);
+      setMsg(data.message || "Category deleted successfully");
       await loadCategories();
     } catch (err: any) {
-      setMsg(
-        err?.response?.data?.message ||
-          "Failed to delete category",
-      );
+      setMsg(err?.response?.data?.message || "Failed to delete category");
     }
   };
 
@@ -217,11 +153,7 @@ export default function MasterCategories() {
           <div
             className="masterCategoryModalBackdrop"
             onMouseDown={(event) => {
-              if (
-                event.target ===
-                  event.currentTarget &&
-                !saving
-              ) {
+              if (event.target === event.currentTarget && !saving) {
                 closeForm();
               }
             }}
@@ -234,14 +166,10 @@ export default function MasterCategories() {
             >
               <div className="masterCategoryModalHead">
                 <div>
-                  <span className="eyebrow">
-                    MASTER DATA
-                  </span>
+                  <span className="eyebrow">MASTER DATA</span>
 
                   <h2 id="master-category-modal-title">
-                    {editingId
-                      ? "Edit Category"
-                      : "Add Category"}
+                    {editingId ? "Edit Category" : "Add Category"}
                   </h2>
 
                   <p>
@@ -262,10 +190,7 @@ export default function MasterCategories() {
                 </button>
               </div>
 
-              <form
-                className="masterCategoryModalForm"
-                onSubmit={submit}
-              >
+              <form className="masterCategoryModalForm" onSubmit={submit}>
                 <label>
                   Category Name
 
@@ -293,8 +218,7 @@ export default function MasterCategories() {
                     onChange={(e) =>
                       setForm({
                         ...form,
-                        description:
-                          e.target.value,
+                        description: e.target.value,
                       })
                     }
                   />
@@ -308,19 +232,12 @@ export default function MasterCategories() {
                     onChange={(e) =>
                       setForm({
                         ...form,
-                        status: e.target.value as
-                          | "active"
-                          | "inactive",
+                        status: e.target.value as "active" | "inactive",
                       })
                     }
                   >
-                    <option value="active">
-                      Active
-                    </option>
-
-                    <option value="inactive">
-                      Inactive
-                    </option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
                   </select>
                 </label>
 
@@ -334,11 +251,7 @@ export default function MasterCategories() {
                     Cancel
                   </button>
 
-                  <button
-                    type="submit"
-                    className="primary"
-                    disabled={saving}
-                  >
+                  <button type="submit" className="primary" disabled={saving}>
                     {saving
                       ? "Saving..."
                       : editingId
@@ -358,16 +271,9 @@ export default function MasterCategories() {
       <div className="masterCategoriesPage">
         <div className="pageHead">
           <div>
-            <span className="eyebrow">
-              MASTER DATA
-            </span>
-
+            <span className="eyebrow">MASTER DATA</span>
             <h1>Categories</h1>
-
-            <p>
-              Add, edit, view and delete
-              categories.
-            </p>
+            <p>Add, edit, view and delete categories.</p>
           </div>
 
           <div className="masterPageActions">
@@ -379,43 +285,25 @@ export default function MasterCategories() {
             >
               <RefreshCw
                 size={17}
-                className={
-                  loading
-                    ? "masterRefreshSpin"
-                    : ""
-                }
+                className={loading ? "masterRefreshSpin" : ""}
               />
-
               Refresh
             </button>
 
-            <button
-              type="button"
-              className="primary"
-              onClick={openCreate}
-            >
+            <button type="button" className="primary" onClick={openCreate}>
               <Plus size={17} />
-
               Add Category
             </button>
           </div>
         </div>
 
-        {msg && (
-          <p className="formMessage">
-            {msg}
-          </p>
-        )}
+        {msg && <p className="formMessage">{msg}</p>}
 
         <div className="tableWrap">
           {loading ? (
-            <div className="masterEmpty">
-              Loading categories...
-            </div>
+            <div className="masterEmpty">Loading categories...</div>
           ) : categories.length === 0 ? (
-            <div className="masterEmpty">
-              No categories found.
-            </div>
+            <div className="masterEmpty">No categories found.</div>
           ) : (
             <table>
               <thead>
@@ -430,81 +318,48 @@ export default function MasterCategories() {
               </thead>
 
               <tbody>
-                {categories.map(
-                  (category) => (
-                    <tr key={category._id}>
-                      <td>
-                        <strong>
-                          {category.name}
-                        </strong>
-                      </td>
-
-                      <td>
-                        {category.slug}
-                      </td>
-
-                      <td>
-                        {category.description ||
-                          "-"}
-                      </td>
-
-                      <td>
-                        <span
-                          className={`statusBadge ${
-                            category.status ===
-                            "active"
-                              ? "statusActive"
-                              : "statusInactive"
-                          }`}
+                {categories.map((category) => (
+                  <tr key={category._id}>
+                    <td>
+                      <strong>{category.name}</strong>
+                    </td>
+                    <td>{category.slug}</td>
+                    <td>{category.description || "-"}</td>
+                    <td>
+                      <span
+                        className={`statusBadge ${
+                          category.status === "active"
+                            ? "statusActive"
+                            : "statusInactive"
+                        }`}
+                      >
+                        {category.status}
+                      </span>
+                    </td>
+                    <td>{new Date(category.createdAt).toLocaleDateString()}</td>
+                    <td>
+                      <div className="categoryActions">
+                        <button
+                          type="button"
+                          className="editAction"
+                          onClick={() => openEdit(category)}
                         >
-                          {category.status}
-                        </span>
-                      </td>
+                          <Edit3 size={16} />
+                          Edit
+                        </button>
 
-                      <td>
-                        {new Date(
-                          category.createdAt,
-                        ).toLocaleDateString()}
-                      </td>
-
-                      <td>
-                        <div className="categoryActions">
-                          <button
-                            type="button"
-                            className="editAction"
-                            onClick={() =>
-                              openEdit(
-                                category,
-                              )
-                            }
-                          >
-                            <Edit3
-                              size={16}
-                            />
-
-                            Edit
-                          </button>
-
-                          <button
-                            type="button"
-                            className="deleteAction"
-                            onClick={() =>
-                              removeCategory(
-                                category,
-                              )
-                            }
-                          >
-                            <Trash2
-                              size={16}
-                            />
-
-                            Delete
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ),
-                )}
+                        <button
+                          type="button"
+                          className="deleteAction"
+                          onClick={() => removeCategory(category)}
+                        >
+                          <Trash2 size={16} />
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           )}

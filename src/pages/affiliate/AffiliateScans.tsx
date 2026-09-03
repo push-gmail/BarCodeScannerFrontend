@@ -150,7 +150,7 @@ export default function AffiliateScans() {
                 ...row,
                 ownerPhoneShared: true,
                 ownerPhoneSharedAt:
-                  response.data.ownerPhoneSharedAt || new Date().toISOString(),
+                 response.data.sharedAt || new Date().toISOString() 
               }
             : row,
         ),
